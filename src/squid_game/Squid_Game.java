@@ -16,7 +16,7 @@ public class Squid_Game {
      */
     public static void main(String[] args) {
         System.out.println("hmm");
-        System.out.println("jsnflwsvjngdlo");
+        System.out.println("jsn=
     }
     
 }
