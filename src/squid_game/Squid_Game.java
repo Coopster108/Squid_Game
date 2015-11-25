@@ -17,7 +17,9 @@ public class Squid_Game {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-          int lifeCount; //may or may not turn this into an incrementor method later
+        
+        //by ER
+        int lifeCount; //may or may not turn this into an incrementor method later
         lifeCount = 5;
         
         String color;
@@ -51,6 +53,7 @@ public class Squid_Game {
         System.out.println("\nYou're marooned on planet Zorg! Would you like an oxygen tank?\n");
         ans = kb.next();
         
+        //by CW
         if(ans.charAt(0)== 'n')
         {
             //code here, check flowchart
@@ -61,7 +64,7 @@ public class Squid_Game {
         }
         }
         
-    else 
+    else //by ER
         if(color.charAt(0)=='g') //green path
         {
             System.out.println("Green");
@@ -80,8 +83,9 @@ public class Squid_Game {
             
             //next step
             //these steps require methods in separate classes, just do sout-tabs containing the info, I'll modify them later
+            //by CW
         }
-    else
+        else    //by ER
             if(color.charAt(0)=='p') //purple path
             {
                 System.out.println("Purple");
@@ -101,8 +105,9 @@ public class Squid_Game {
                 
                 //next step 
                 //if else statements
+                //by CW
         }
-            else
+            else //by ER
             {
                 lifeCount = lifeCount - 1;
                 System.out.println("Red"); //red path
