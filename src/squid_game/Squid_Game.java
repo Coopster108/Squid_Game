@@ -187,7 +187,7 @@ public class Squid_Game {
                do{
                    System.out.println("Your number must be prime number between 23-31 \n");
                    passcode = kb.nextInt();
-               } while(passcode > 2); //for now just enter 1, must create method in *separate* class 
+               } while(SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23); 
                
                String dir;
                do{ //next step
