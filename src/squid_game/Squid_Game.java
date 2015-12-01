@@ -63,11 +63,6 @@ public class Squid_Game {
             System.out.println("\nYou're marooned on planet Zorg! Would you like an oxygen tank?\n");
             ans = kb.next();
             
-            if(ans.charAt(0) != 'n' && ans.charAt(0) != 'y')
-            {
-                System.out.println("Pick yes or no!");
-            }
-            
             if(ans.charAt(0)== 'n')
             {
                 System.out.println("\nOh no you're out of breath & lost a life!");
