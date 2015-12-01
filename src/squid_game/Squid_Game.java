@@ -155,8 +155,23 @@ public class Squid_Game {
                     String ans2;
                     System.out.println("\nYou're not the first one to get lost in this year. "
                             + "\nYou have been entered into the missing person's catalog.");
-                    System.out.println("\"sorting data\" blah blah yearss........");
-                    System.out.println("\nEnter a distress signal: ");
+                   //view missing persons data base
+                    DataBase data = new DataBase();
+                    System.out.println("\nSorting the raw data...\n" + data.toString());
+                    System.out.println("\nCompare two years: ");
+                    
+                    //input any two years within range
+                    int yearInput = kb.nextInt();
+                    data.setYearInput(yearInput);
+                    int yearInput2 = kb.nextInt();
+                    data.setYearInput2(yearInput2);
+                    //System.out.println("Year #: " + (yearInput-2500+1));
+                    System.out.println("Get Index: " + data.getIndex());
+                    System.out.println("Get Index: " + data.getIndex2());
+                    System.out.println(yearInput + " had " + data.compareY() + " more missing persons reports than " + yearInput2);
+                    
+                    //move on
+                    System.out.println("\nEnter a distress signal: [button]");
                     ans2 = kb.next();
                     System.out.println("\nYour distress signal was picked up by a freindly pirate!");
                     System.out.println("\nCongrats! You made it safely back to Bikini Bottom with: " + lifeCount + " lives!");
