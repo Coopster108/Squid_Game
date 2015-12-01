@@ -165,8 +165,6 @@ public class Squid_Game {
                     }
             } while(year < 2500 || year > 2600 && lifeCount > 0);
             
-            //next step
-            //these steps require methods in separate classes, just do sout-tabs containing the info, I'll modify them later
             //by CW
             
         }
@@ -267,8 +265,6 @@ public class Squid_Game {
                     }
                     
                     }while(ans3.charAt(0) != 'r' && lifeCount > 0);
-                    
-                    
                 }
                 
                 if(dir.charAt(0) == 'e')//EAST
@@ -286,10 +282,6 @@ public class Squid_Game {
                 }
                }while(dir.charAt(0) != 'w' 
                        && lifeCount > 0); //no n,e,s as it always loops to direction again
-                //next step 
-                //if else statements
-                //by CW
-                
                 
         }
             
@@ -312,5 +304,4 @@ public class Squid_Game {
             System.out.println("You lose!");
         }
     }
-    
 }
