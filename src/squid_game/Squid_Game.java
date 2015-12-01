@@ -19,7 +19,7 @@ public class Squid_Game {
     public static void main(String[] args) {
         
         //by ER
-        int lifeCount; //may or may not turn this into an incrementor method later
+        int lifeCount; 
         lifeCount = 5;
         
         
@@ -303,7 +303,7 @@ public class Squid_Game {
     else //by ER
             {
                 if(color.charAt(0)=='r'){
-                lifeCount = lifeCount - 1;
+                --lifeCount;
                 System.out.println("\nRed"); //**RED** path
                 System.out.println("You've descended into a bottomless void. Lose 1 life.\n");
                 System.out.println("Go back to square one!");}
