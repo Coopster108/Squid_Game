@@ -63,6 +63,11 @@ public class Squid_Game {
             System.out.println("\nYou're marooned on planet Zorg! Would you like an oxygen tank?\n");
             ans = kb.next();
             
+            if(ans.charAt(0) != 'n' && ans.charAt(0) != 'y')
+            {
+                System.out.println("Pick yes or no!");
+            }
+            
             if(ans.charAt(0)== 'n')
             {
                 System.out.println("\nOh no you're out of breath & lost a life!");
@@ -74,7 +79,7 @@ public class Squid_Game {
                         System.out.println("--You died! Game Over--");
                     }
             }
-        } while(ans.charAt(0) == 'n'&& lifeCount > 0);
+        } while(ans.charAt(0) != 'y'&& lifeCount > 0);
         
         if(ans.charAt(0)== 'y')//next step
         {
@@ -82,6 +87,12 @@ public class Squid_Game {
             {
                 System.out.println("\nWill you dive deeper or shallower?");
                 ans = kb.next();
+                
+                 if(ans.charAt(0) != 'd' && ans.charAt(0) != 's')
+            {
+                System.out.println("Pick one!");
+            }
+                
                 if(ans.charAt(0)== 'd')
                 {
                     System.out.println("\nYour brains exploded & you lost a life!");
@@ -93,7 +104,7 @@ public class Squid_Game {
                             System.out.println("--You died! Game Over--");
                         }
                 }
-            } while(ans.charAt(0) == 'd'&& lifeCount > 0);
+            } while(ans.charAt(0) != 's' && lifeCount > 0);
             
             if(ans.charAt(0)== 's')//next step 
             {
@@ -107,6 +118,7 @@ public class Squid_Game {
                         System.exit(0);//so it doesnt fall through to restart
                     }
                     else
+                        if(ans.charAt(0)== 'n')
                     {
                         System.out.println("You get lost in the dark ocean & lose a life!");
                         --lifeCount;
@@ -117,19 +129,9 @@ public class Squid_Game {
                             System.out.println("--You died! Game Over--");
                         }
                     }
-                }while(ans.charAt(0)== 'n'&& lifeCount > 0);
+                }while(ans.charAt(0)!= 'y'&& lifeCount > 0);
                 
             }
-            
-        }
-        
-        else
-        {
-            System.exit(0);
-            //i think i need a for loop here to repeat the question if they dont give the correct answer
-            //to be fixed later
-            
-            //... unless it doesnt matter bc this is a text version of what were doing...
             
         }
 
@@ -153,7 +155,7 @@ public class Squid_Game {
                 System.out.println("Your year must fall between 2500 and 2600");
                 year = kb.nextInt();
                 
-                    if(year > 2500 && year < 2600)
+                    if(year >= 2500 && year <= 2600)
                     {
                     String ans2;
                     System.out.println("\nYou're not the first one to get lost in this year. "
@@ -171,8 +173,6 @@ public class Squid_Game {
             //next step
             //these steps require methods in separate classes, just do sout-tabs containing the info, I'll modify them later
             //by CW
-            
-            
             
         }
         
@@ -204,7 +204,7 @@ public class Squid_Game {
                 String ans3;
                 if(dir.charAt(0) == 's') //SOUTH
                 {
-                    
+                    do{
                     System.out.println("\nYou've been caught by a fishnet!");
                     System.out.println("\nDo you try to escape?"); //next step
                     ans3 = kb.next();
@@ -215,11 +215,13 @@ public class Squid_Game {
                         System.out.println("Lives: " + lifeCount);
                     }
                     else
+                        if(ans3.charAt(0) == 'n')
                     {
                         System.out.println("\nYou're turned into Sushi & lose a life!");
                         --lifeCount;
                         System.out.println("Lives: " + lifeCount);
                     }
+                    }while(ans3.charAt(0) != 'y' && ans3.charAt(0) != 'n');
                 }
                 
                 if(dir.charAt(0) == 'w') //WEST
@@ -235,6 +237,7 @@ public class Squid_Game {
                     }
                     
                     else
+                        if(ans3.charAt(0) == 'r')
                     {
                         System.out.println("\nYou gained a life & evoled into buff squid!");
                         ++lifeCount;
@@ -253,6 +256,7 @@ public class Squid_Game {
                         }
                         
                         else
+                            if(ans.charAt(0)== 'n')
                         {
                         System.out.println("You get lost in the dark ocean & lose a life!");
                         --lifeCount;
@@ -264,7 +268,7 @@ public class Squid_Game {
                             }
                         }
                         
-                        }while(ans.charAt(0)== 'n'&& lifeCount > 0);
+                        }while(ans.charAt(0)!= 'y' && lifeCount > 0);
                     }
                     
                     }while(ans3.charAt(0) != 'r' && lifeCount > 0);
@@ -298,10 +302,11 @@ public class Squid_Game {
             
     else //by ER
             {
+                if(color.charAt(0)=='r'){
                 lifeCount = lifeCount - 1;
                 System.out.println("\nRed"); //**RED** path
                 System.out.println("You've descended into a bottomless void. Lose 1 life.\n");
-                System.out.println("Go back to square one!");
+                System.out.println("Go back to square one!");}
             }
     
     }while(lifeCount > 0);//added a restart for full drops through the game
