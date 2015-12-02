@@ -168,7 +168,13 @@ public class Squid_Game {
                     //System.out.println("Year #: " + (yearInput-2500+1));
                     System.out.println("Get Index: " + data.getIndex());
                     System.out.println("Get Index: " + data.getIndex2());
-                    System.out.println(yearInput + " had " + data.compareY() + " more missing persons reports than " + yearInput2);
+                    if(data.compareY() < 0)
+                         System.out.println(yearInput + " had " + data.compareY() + " more missing persons reports than " + yearInput2);
+                         else
+                            if(data.compareY() > 0)
+                                 System.out.println(yearInput + " had " + data.compareY() + " more missing persons reports than " + yearInput2);
+                            else
+                                System.out.println(yearInput + " and " + yearInput2 + "had the same amount of missing persons reports\n");
                     
                     //move on
                     System.out.println("\nEnter a distress signal: [button]");

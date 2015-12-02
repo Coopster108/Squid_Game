@@ -84,7 +84,7 @@ public class DataBase {
     }
     public int compareY() //compare year1 and year2
     {
-        return(getMissCount()-getMissCount2()); 
+        return(Math.abs(getMissCount()-getMissCount2()));  
     }
     
     
