@@ -42,6 +42,9 @@ int seen = 0;
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,17 +67,32 @@ int seen = 0;
             }
         });
 
+        jLabel1.setText("Answer;");
+
+        jButton3.setText("Submit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addGap(36, 36, 36)
                 .addComponent(jButton2)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextField1)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,8 +101,12 @@ int seen = 0;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,8 +169,11 @@ int seen = 0;
              case 3: //purple path
             {
                 //getContentPane().setBackground( new Color(128,128,255)); 
-                jTextArea1.setText("");
-                seen = 10;
+                 jTextArea1.setText("You're trapped in a capsule at the\n"
+                    + " bottom of the ocean.\n"
+                    + "\n"
+                    + "To open capsule, guess 2 digit passcode. ");
+                seen = 11;
                 break;
             }
            
@@ -381,6 +406,36 @@ int seen = 0;
                 break;
             }           
         }
+        }//close 8
+        //********************end of blue *******************************
+        if(seen == 10) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        UIManager.put("OptionPane.background", new Color(200,200,255));
+        Object[] options = {"OK"};
+        option = JOptionPane.showOptionDialog(this,
+           "Please enter a passcode",
+            "Passcode",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[0]);
+        
+        UIManager.put("OptionPane.background", paneBG); // reset BG
+        //************ End Custom dialog ***********
+            
+            
+        switch(option)
+        {
+            case 0: //if clicks
+            {
+                getContentPane().setBackground( new Color(255,128,128));
+                jTextArea1.setText("[Show data]");
+                seen = 11;
+            }   
+                     
+        }
+
         }
        
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -388,6 +443,21 @@ int seen = 0;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+//submit button
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(seen==11){
+            int passcode;
+            passcode = Integer.parseInt(jTextField1.getText());
+
+             if(SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23)
+             {
+                 System.out.println("Your passcode must be prime number between 23-31 \n");
+             }
+             else{
+                 System.out.println("great!");
+             }
+        }       
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,7 +497,14 @@ int seen = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isNumeric(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
