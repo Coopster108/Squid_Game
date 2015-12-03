@@ -170,10 +170,9 @@ int seen = 0;
             {
                 //getContentPane().setBackground( new Color(128,128,255)); 
                  jTextArea1.setText("You're trapped in a capsule at the\n"
-                    + " bottom of the ocean.\n"
-                    + "\n"
-                    + "To open capsule, guess 2 digit passcode. ");
-                seen = 11;
+                    + "bottom of the ocean.\n"
+                    + "\n");
+                seen = 10;
                 break;
             }
            
@@ -413,7 +412,7 @@ int seen = 0;
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"OK"};
         option = JOptionPane.showOptionDialog(this,
-           "Please enter a passcode",
+          "To open capsule, guess 2 digit passcode. \n" + "Please enter passcode below",
             "Passcode",
         JOptionPane.YES_NO_CANCEL_OPTION,
         JOptionPane.QUESTION_MESSAGE,
