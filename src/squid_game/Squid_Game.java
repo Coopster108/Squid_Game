@@ -13,10 +13,7 @@ import java.util.Scanner;
  */
 public class Squid_Game {
 
-    /**
-     * @param args the command line arguments   
-     */
-    public static void main(String[] args) {
+ 
         
         //by ER
         int lifeCount; 
@@ -155,6 +152,7 @@ public class Squid_Game {
                     String ans2;
                     System.out.println("\nYou're not the first one to get lost in this year. "
                             + "\nYou have been entered into the missing person's catalog.");
+                    //by ER
                    //view missing persons data base
                     DataBase data = new DataBase();
                     System.out.println("\nSorting the raw data...\n" + data.toString());
@@ -177,6 +175,7 @@ public class Squid_Game {
                                 System.out.println(yearInput + " and " + yearInput2 + "had the same amount of missing persons reports\n");
                     
                     //move on
+                    //by CTW
                     System.out.println("\nEnter a distress signal: [button]");
                     ans2 = kb.next();
                     System.out.println("\nYour distress signal was picked up by a freindly pirate!");
@@ -186,7 +185,7 @@ public class Squid_Game {
                     }
             } while(year < 2500 || year > 2600 && lifeCount > 0);
             
-            //by CW
+           
             
         }
         
