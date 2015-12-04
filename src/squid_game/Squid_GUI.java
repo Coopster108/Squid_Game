@@ -28,6 +28,7 @@ int seen = 0;
         jButton2.setText("" + seen);
          getContentPane().setBackground( new Color(147,200,200)); 
     }
+     DataBase squidMiss = new DataBase();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -207,6 +208,7 @@ int seen = 0;
                 case 0: //if clicks
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("Data by Year: \n" + squidMiss.toString());
                     seen = 3;
                 }
 
@@ -233,6 +235,7 @@ int seen = 0;
                 case 0: //if clicks
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("compare later");
                     seen = 4;
                     break;
                 }
