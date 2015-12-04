@@ -149,9 +149,7 @@ int seen = 0;
             {
                 getContentPane().setBackground( new Color(128,255,128)); 
                 jTextArea1.setText("Oh no!\n"
-                    + "You've gone even further into the future!\n" 
-                    + "Choose a year to return to.\n"
-                    + "Unfortunately your home year, 2015 is not available\n\n");
+                    + "You've gone even further into the future!\n");
                 
                  seen = 1;
                 break;
@@ -191,208 +189,189 @@ int seen = 0;
        
        if(seen == 2){
            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"View"};
-        option = JOptionPane.showOptionDialog(this,
-           "View Data Base",
-            "View Data Base",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[0]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[Show data]");
-                seen = 3;
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"View"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Would you like to view the missing persons data base",
+                    "Data",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    seen = 3;
+                }
+
             }
-            
-                     
-        }
        } //end seen 2
        
        if(seen == 3){
            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Compare"};
-        option = JOptionPane.showOptionDialog(this,
-           "Compare data between 2 years",
-            "Comparison",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[0]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[Show data]");
-                seen = 4;
-                break;
-            }       
-        }
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Compare"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Compare data between two years",
+                    "Compare",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    seen = 4;
+                    break;
+                }
+
+            }
        } //end seen 3
        
-        if(seen == 4){
-            
-              Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Yes",
-                    "No"};
-        option = JOptionPane.showOptionDialog(this,
-            "Would you like to send out a distress signal?",
-            "Distress",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[1]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("Your distress signal was picked up by a freindly pirate!\n");
-                seen = 5;
-                break;
+        if (seen == 4) {
+
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Yes",
+                "No"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Would you like to send out a distress signal?",
+                    "Distress",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("Your distress signal was picked up by a freindly pirate!\n");
+                    seen = 5;
+                    break;
+                }
+
+                case 1: {
+                    getContentPane().setBackground(new Color(128, 255, 128));
+                    jTextArea1.setText("You're stuck in limbo");
+                    break;
+                }
+
             }
-            
-            case 1:   
-            {
-                getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("You're stuck in limbo");
-                break;
-            }
-            
-           }
         } //end seen 4
-        
-         if(seen ==5){
+
+        if (seen == 5) {
             jTextArea1.append("Congrats! You made it safely back to Bikini Bottom");
         } //end of green branch, player wins
-       
-        
+
         //********************Blue*****************************
-        if(seen==6) 
-        {
-        
-              Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Yes",
-                    "No"};
-        option = JOptionPane.showOptionDialog(this,
-            "You're marooned on planet Zorg!\n"
-                    + "Would you like an oxygen tank?",
-            "Oxygen Tank?",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[1]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[next]");
-                seen = 7;
-                break;
-            }
-            
-            case 1:  
-            {
-                getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("You're suffocating! Lose 1 life");
-                break;
-            }           
-        }
-        }//close 
-        if(seen ==7){
+        if (seen == 6) {
+
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Shallow",
-                    "Deep"};
-        option = JOptionPane.showOptionDialog(this,
-                "Dive deeper\n"
-                + " or shallower?",
-            "Dive",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[1]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("A submarine is approaching.");
-                seen = 8;
-                break;
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Yes",
+                "No"};
+            option = JOptionPane.showOptionDialog(this,
+                    "You're marooned on planet Zorg!\n"
+                    + "Would you like an oxygen tank?",
+                    "Oxygen Tank?",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("[next]");
+                    seen = 7;
+                    break;
+                }
+
+                case 1: {
+                    getContentPane().setBackground(new Color(128, 255, 128));
+                    jTextArea1.setText("You're suffocating! Lose 1 life");
+                    break;
+                }
             }
-            
-            case 1:  
-            {
-                getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("Your brains just exploded");
-                break;
-            }           
-        }
+        }//close 
+        if (seen == 7) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Shallow",
+                "Deep"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Dive deeper\n"
+                    + " or shallower?",
+                    "Dive",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("A submarine is approaching.");
+                    seen = 8;
+                    break;
+                }
+
+                case 1: {
+                    getContentPane().setBackground(new Color(128, 255, 128));
+                    jTextArea1.setText("Your brains just exploded");
+                    break;
+                }
+            }
         } //end seen 7
-        
-        if(seen == 8){
-             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Yes",
-                    "No"};
-        option = JOptionPane.showOptionDialog(this,
-                "Would you like to stowaway?",
-            "Hitch Hike",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[1]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
+
+        if (seen == 8) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Yes",
+                "No"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Would you like to stowaway?",
+                    "Hitch Hike",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128,128));
                 jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
                 seen = 9;
                 break;
@@ -409,30 +388,28 @@ int seen = 0;
         //********************purple *******************************
         if(seen == 10) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"OK"};
-        option = JOptionPane.showOptionDialog(this,
-          "To open capsule, guess 2 digit passcode. \n" + "Please enter passcode below",
-            "Passcode",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[0]);
-        
-        UIManager.put("OptionPane.background", paneBG); // reset BG
-        //************ End Custom dialog ***********
-            
-            
-        switch(option)
-        {
-            case 0: //if clicks
-            {
-                getContentPane().setBackground( new Color(255,128,128));
-                seen = 11;
-            }   
-                     
-        }
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"OK"};
+            option = JOptionPane.showOptionDialog(this,
+                    "To open capsule, guess 2 digit passcode. \n" + "Please enter passcode below",
+                    "Passcode",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    seen = 11;
+                }
+
+            }
 
         }
         if(seen==11){
@@ -458,13 +435,35 @@ int seen = 0;
             
         switch(option)
         {
-            case 0: //if clicks
+            case 0: //if north
             {
                 getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[show data]");
-                seen = 12;
+                jTextArea1.setText("[you die]");
+                seen = 13;
+                break;
             }   
-                     
+        case 1:  //south
+            {
+                getContentPane().setBackground( new Color(128,255,128)); 
+                jTextArea1.setText("");
+                seen = 14; //guestimate change later
+                break;
+            }
+            
+            case 2: //east
+            {
+                getContentPane().setBackground( new Color(128,128,255)); 
+                jTextArea1.setText("[you die]");
+                seen = 15; //change later
+                break;
+            }
+             case 3: //west
+            {
+                //getContentPane().setBackground( new Color(128,128,255)); 
+                 jTextArea1.setText("");
+                seen = 16; //change later
+                break;
+            }          
         }
 
         }
