@@ -478,17 +478,38 @@ int seen = 0;
     }//GEN-LAST:event_jButton2ActionPerformed
 //submit button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(seen==11){
+        if (seen == 11) {
             int passcode;
             passcode = Integer.parseInt(jTextField1.getText());
 
-             if(SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23)
-             {
-                 System.out.println("Your passcode must be prime number between 23-31 \n");//change to a dialogue later
-             }
-             else{
-                 jTextArea1.setText("Passcode Accepted! Click next!");
-                 seen = 12;
+            if (SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23) {
+               
+                Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+                UIManager.put("OptionPane.background", new Color(200, 200, 255));
+                Object[] options = {"OK"};
+                int option = JOptionPane.showOptionDialog(this,
+                        "Your passcode must be prime number between 23-31 \n",
+                        "Passcode",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                UIManager.put("OptionPane.background", paneBG); // reset BG
+                //************ End Custom dialog ***********
+
+                switch (option) {
+                    case 0: //if clicks
+                    {
+                        getContentPane().setBackground(new Color(255, 128, 128));
+                        seen = 11;
+                    }
+
+                }
+            } else {
+                jTextArea1.setText("Passcode Accepted! Click next!");
+                seen = 12;
              }
         }       
     }//GEN-LAST:event_jButton3ActionPerformed
