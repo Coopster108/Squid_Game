@@ -406,7 +406,7 @@ int seen = 0;
             }           
         }
         }//close 8
-        //********************end of blue *******************************
+        //********************purple *******************************
         if(seen == 10) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
@@ -429,13 +429,47 @@ int seen = 0;
             case 0: //if clicks
             {
                 getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[Show data]");
                 seen = 11;
             }   
                      
         }
 
         }
+        if(seen==11){
+            jTextArea1.setText("Passcode Pending!");
+        }
+        
+        if(seen == 12) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        UIManager.put("OptionPane.background", new Color(200,200,255));
+        Object[] options = {"North", "South","East","West"};
+        option = JOptionPane.showOptionDialog(this,
+          "Choose a direction",
+            "Passcode",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[3]);
+        
+        UIManager.put("OptionPane.background", paneBG); // reset BG
+        //************ End Custom dialog ***********
+            
+            
+        switch(option)
+        {
+            case 0: //if clicks
+            {
+                getContentPane().setBackground( new Color(255,128,128));
+                jTextArea1.setText("[show data]");
+                seen = 12;
+            }   
+                     
+        }
+
+        }
+        
+        
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -450,10 +484,11 @@ int seen = 0;
 
              if(SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23)
              {
-                 System.out.println("Your passcode must be prime number between 23-31 \n");
+                 System.out.println("Your passcode must be prime number between 23-31 \n");//change to a dialogue later
              }
              else{
-                 System.out.println("great!");
+                 jTextArea1.setText("Passcode Accepted! Click next!");
+                 seen = 12;
              }
         }       
     }//GEN-LAST:event_jButton3ActionPerformed
