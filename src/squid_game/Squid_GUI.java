@@ -116,6 +116,7 @@ int seen = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         //Custom button text
+        int lifeCount = 5;
         int option;
         if(seen==0)
         {
@@ -142,7 +143,7 @@ int seen = 0;
             case 0: //red path
             {
                 getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("You die");
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou die");
                 break;
             }
             
