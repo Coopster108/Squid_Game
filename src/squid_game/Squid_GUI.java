@@ -18,6 +18,8 @@ import java.awt.Dialogue;
  * @author ElizabethReed PC
  */
 public class Squid_GUI extends javax.swing.JFrame {
+    
+        int lifeCount = 5;
 int seen = 0;
     private Component frame;
     /**
@@ -39,6 +41,7 @@ int seen = 0;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -47,11 +50,12 @@ int seen = 0;
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
 
+        jButton4.setText("jButton4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("You are Squidward Tenticals stuck \nin the future. You've arrived \nin an empty room with \nvirtual transportation squares.");
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Next");
@@ -68,7 +72,7 @@ int seen = 0;
             }
         });
 
-        jLabel1.setText("Answer;");
+        jLabel1.setText("Answer:");
 
         jButton3.setText("Submit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -116,16 +120,32 @@ int seen = 0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         //Custom button text
-        int lifeCount = 5;
         int option;
+        
+        if(lifeCount == 0){
+            seen = 9;
+           jTextArea1.setText("You died!\nGame over. Press Next to start over.");
+        }
+        
+        else
+            if(seen==9){
+                seen=0;
+                lifeCount=5;
+            }
+        
         if(seen==0)
         {
+        jTextArea1.setText("Lives: " + lifeCount + "\nYou are Squidward Tenticals stuck \n" +
+        "in the future. You've arrived \n" +
+        "in an empty room with \n" +
+        "virtual transportation squares.");
+
         Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"Red",
                     "Green",
                     "Blue",
-                    "purple"};
+                    "Purple"};
         option = JOptionPane.showOptionDialog(this,
             "Choose a square",
             "Color Picker",
@@ -142,8 +162,12 @@ int seen = 0;
         {
             case 0: //red path
             {
+                --lifeCount;
                 getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("Lives: " + lifeCount + "\nYou die");
+                jTextArea1.setText("Lives: " + lifeCount 
+                        + "\nYou've descended into a bottomless void. "
+                        + "Lose 1 life."
+                        + "\nPress Next to try again");
                 break;
             }
             
@@ -168,7 +192,7 @@ int seen = 0;
             }
              case 3: //purple path
             {
-                //getContentPane().setBackground( new Color(128,128,255)); 
+                getContentPane().setBackground( new Color(128,128,255)); 
                  jTextArea1.setText("You're trapped in a capsule at the\n"
                     + "bottom of the ocean.\n"
                     + "\n");
@@ -184,17 +208,21 @@ int seen = 0;
         
         //*******************Green********************
         if(seen ==1){
-            jTextArea1.append("You're not the first one to get lost in this year.\n"
+            jTextArea1.setText("You're not the first one to get lost in this year.\n"
                         + "You have been entered into the missing person's catalog.");
             seen = 2;
         }
-       
+        
+        // ****** LOOK AT THIS THIS IS IMPORTANT LOOK!!! 
+        //the "else if" v causes the box to wait!!! ******
+        
+       else
        if(seen == 2){
            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"View"};
             option = JOptionPane.showOptionDialog(this,
-                    "Would you like to view the missing persons data base",
+                    "Would you like to view the missing persons data base?",
                     "Data",
                     JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
@@ -216,6 +244,7 @@ int seen = 0;
             }
        } //end seen 2
        
+        else
        if(seen == 3){
            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -244,6 +273,7 @@ int seen = 0;
             }
        } //end seen 3
        
+        else
         if (seen == 4) {
 
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
@@ -273,16 +303,22 @@ int seen = 0;
 
                 case 1: {
                     getContentPane().setBackground(new Color(128, 255, 128));
-                    jTextArea1.setText("You're stuck in limbo");
+                    --lifeCount;
+                    jTextArea1.setText("You're stuck in limbo!\nPress next to try again!");
+                    
                     break;
                 }
 
             }
         } //end seen 4
-
+        
+        else
         if (seen == 5) {
-            jTextArea1.append("Congrats! You made it safely back to Bikini Bottom");
+            jTextArea1.append("Congrats! You made it safely back to Bikini Bottom. "
+                    + "\nPress next to try again.");
+            seen = 0;
         } //end of green branch, player wins
+        
 
         //********************Blue*****************************
         if (seen == 6) {
@@ -389,7 +425,9 @@ int seen = 0;
             }           
         }
         }//close 8
+        
         //********************purple *******************************
+        
         if(seen == 10) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -556,6 +594,7 @@ int seen = 0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
