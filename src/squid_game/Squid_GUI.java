@@ -15,11 +15,11 @@ import java.awt.Dialogue;
 
 /**
  *
- * @author ElizabethReed PC
+ * @author ElizabethReed PC & Cooper Whittemore
  */
 public class Squid_GUI extends javax.swing.JFrame {
     
-        int lifeCount = 5;
+int lifeCount = 5;
 int seen = 0;
     private Component frame;
     /**
@@ -56,6 +56,7 @@ int seen = 0;
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("Lives: 5\nYou are Squidward Tenticals stuck \nin the future. You've arrived \nin an empty room with\nvirtual transportation squares.");
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Next");
@@ -123,15 +124,33 @@ int seen = 0;
         int option;
         
         if(lifeCount == 0){
-            seen = 9;
-           jTextArea1.setText("You died!\nGame over. Press Next to start over.");
+      Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        UIManager.put("OptionPane.background", new Color(200,200,255));
+        Object[] options = {"Quit",
+                    "Retry"};
+        option = JOptionPane.showOptionDialog(this,
+            "You died!\nGame over. Press Retry to start over.",
+            "Game Over",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[1]);
+        
+        switch(option)
+        {
+            case 0:{
+                System.exit(0);
+            }
+            
+            case 1:{
+                lifeCount = 5;
+                seen = 0;
+            }
         }
         
-        else
-            if(seen==9){
-                seen=0;
-                lifeCount=5;
-            }
+        }
+        
         
         if(seen==0)
         {
@@ -304,7 +323,7 @@ int seen = 0;
                 case 1: {
                     getContentPane().setBackground(new Color(128, 255, 128));
                     --lifeCount;
-                    jTextArea1.setText("You're stuck in limbo!\nPress next to try again!");
+                    jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck in limbo!\nPress next to try again!");
                     
                     break;
                 }
@@ -344,23 +363,27 @@ int seen = 0;
                 case 0: //if clicks
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
-                    jTextArea1.setText("[next]");
+                    jTextArea1.setText("You're swimming through the giant Ocean...");
                     seen = 7;
                     break;
                 }
 
                 case 1: {
+                    --lifeCount;
                     getContentPane().setBackground(new Color(128, 255, 128));
-                    jTextArea1.setText("You're suffocating! Lose 1 life");
+                    jTextArea1.setText("Lives: " + lifeCount + "\nYou're suffocating! "
+                            + "Press next to try again!");
                     break;
                 }
             }
         }//close 
+        
+        else
         if (seen == 7) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
-            Object[] options = {"Shallow",
-                "Deep"};
+            Object[] options = {"Shallower",
+                "Deeper"};
             option = JOptionPane.showOptionDialog(this,
                     "Dive deeper\n"
                     + " or shallower?",
@@ -384,13 +407,16 @@ int seen = 0;
                 }
 
                 case 1: {
+                    --lifeCount;
                     getContentPane().setBackground(new Color(128, 255, 128));
-                    jTextArea1.setText("Your brains just exploded");
+                    jTextArea1.setText("Lives: " + lifeCount + "\nYour brains just "
+                            + "exploded from pressure! \nPress next to try again!");
                     break;
                 }
             }
         } //end seen 7
-
+        
+        else
         if (seen == 8) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -419,11 +445,21 @@ int seen = 0;
             
             case 1:  
             {
+                --lifeCount;
                 getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("You're going to rot at the bottom of the sea");
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
+                        + "\nPress next to try again!");
                 break;
             }           
         }
+            
+             
+            if(seen == 9)
+            {
+                jTextArea1.append("\nCongrats! You made it safely back to Bikini Bottom. "
+                    + "\nPress next to try again.");
+            seen = 0;
+            }
         }//close 8
         
         //********************purple *******************************
@@ -479,35 +515,62 @@ int seen = 0;
         {
             case 0: //if north
             {
+                --lifeCount;
                 getContentPane().setBackground( new Color(255,128,128));
-                jTextArea1.setText("[you die]");
-                seen = 13;
+                jTextArea1.setText("Lives: " +lifeCount+ "\nYou've been attacked "
+                        + "by zombie pinapples!\nPress Next to try again!");
                 break;
             }   
         case 1:  //south
             {
                 getContentPane().setBackground( new Color(128,255,128)); 
-                jTextArea1.setText("");
-                seen = 14; //guestimate change later
+                jTextArea1.setText("You've been caught by a fishnet!");
+                seen = 14; 
                 break;
             }
             
             case 2: //east
             {
-                getContentPane().setBackground( new Color(128,128,255)); 
-                jTextArea1.setText("[you die]");
-                seen = 15; //change later
+                --lifeCount;
+                getContentPane().setBackground( new Color(255,128,128));
+                jTextArea1.setText("Lives: " +lifeCount+ "\nYou've been attacked "
+                        + "by shark puppies!\nPress Next to try again!");
                 break;
             }
              case 3: //west
             {
                 //getContentPane().setBackground( new Color(128,128,255)); 
                  jTextArea1.setText("");
-                seen = 16; //change later
+                seen = 16; 
                 break;
             }          
         }
-
+        
+        if(seen==14){//south
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        UIManager.put("OptionPane.background", new Color(200,200,255));
+        Object[] options = {"Quit",
+                    "Retry"};
+        option = JOptionPane.showOptionDialog(this,
+            "You died!\nGame over. Press Retry to start over.",
+            "Game Over",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[1]);
+        
+        switch(option)
+        {
+            case 0:{
+                System.exit(0);
+            }
+            
+            case 1:{
+                lifeCount = 5;
+                seen = 0;
+            }
+        }
         }
         
         
