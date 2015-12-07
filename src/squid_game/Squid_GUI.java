@@ -123,7 +123,7 @@ int seen = 0;
         //Custom button text
         int option;
         
-        if(lifeCount == 0){
+        if(lifeCount <= 0){
       Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"Quit",
@@ -141,11 +141,13 @@ int seen = 0;
         {
             case 0:{
                 System.exit(0);
+                break;
             }
             
             case 1:{
                 lifeCount = 5;
                 seen = 0;
+                break;
             }
         }
         
@@ -521,7 +523,7 @@ int seen = 0;
                         + "by zombie pinapples!\nPress Next to try again!");
                 break;
             }   
-        case 1:  //south
+            case 1:  //south
             {
                 getContentPane().setBackground( new Color(128,255,128)); 
                 jTextArea1.setText("You've been caught by a fishnet!");
@@ -540,39 +542,119 @@ int seen = 0;
              case 3: //west
             {
                 //getContentPane().setBackground( new Color(128,128,255)); 
-                 jTextArea1.setText("");
+                 jTextArea1.setText("You find a diner!");
                 seen = 16; 
                 break;
-            }          
+            }    
         }
         
+        }
+        
+        else
         if(seen==14){//south
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Quit",
-                    "Retry"};
+        Object[] options = {"No",
+                    "Yes"};
         option = JOptionPane.showOptionDialog(this,
-            "You died!\nGame over. Press Retry to start over.",
-            "Game Over",
+            "Do you want to try to escape?",
+            "Caught!",
         JOptionPane.YES_NO_CANCEL_OPTION,
         JOptionPane.QUESTION_MESSAGE,
         null,
         options,
         options[1]);
         
-        switch(option)
-        {
-            case 0:{
-                System.exit(0);
+        switch(option){
+            case 0:{//no
+                --lifeCount;
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're tunred into"
+                        + " sushi! \nPress Next to try again!");
+                seen = 12;
+                break;
             }
-            
-            case 1:{
-                lifeCount = 5;
-                seen = 0;
+            case 1:{//yes
+                --lifeCount;
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're stangled!"
+                        + "\nPress Next to try again!");
+                seen = 12;
+                break;
             }
-        }
         }
         
+        }
+        
+        else
+            if(seen==16){
+                    Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        UIManager.put("OptionPane.background", new Color(200,200,255));
+        Object[] options = {"Braised Plankton",
+                    "Radio-Active Algae"};
+        option = JOptionPane.showOptionDialog(this,
+            "What will you eat?",
+            "Feast!",
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        options,
+        options[1]);
+        
+        switch(option){
+            case 0:{//braised
+                --lifeCount;
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're poisoned!"
+                        + "\nPress Next to try again!");
+                seen = 16;
+                break;
+            }
+            case 1:{//radio-active
+                ++lifeCount;
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're strengthened!");
+                seen = 17;
+                break;
+            }
+        }
+        
+        }
+        
+        else
+        if(seen==17){
+                 jTextArea1.setText("A submarine approaches!");
+                 Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Yes",
+                "No"};
+            option = JOptionPane.showOptionDialog(this,
+                    "Would you like to stowaway?",
+                    "Hitch Hike",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            UIManager.put("OptionPane.background", paneBG); // reset BG
+            //************ End Custom dialog ***********
+
+            switch (option) {
+                case 0: //if clicks
+                {
+                    getContentPane().setBackground(new Color(255, 128,128));
+                jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
+                seen = 9;
+                break;
+            }
+            
+            case 1:  
+            {
+                --lifeCount;
+                getContentPane().setBackground(new Color(128, 255, 128));
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
+                        + "\nPress next to try again!");
+                break;
+            }
+            }
+        }
         
        
     }//GEN-LAST:event_jButton1ActionPerformed
