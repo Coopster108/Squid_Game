@@ -49,6 +49,7 @@ int seen = 0;
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         jButton4.setText("jButton4");
 
@@ -95,9 +96,11 @@ int seen = 0;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField1)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -110,9 +113,11 @@ int seen = 0;
                     .addComponent(jButton2)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -208,7 +213,7 @@ int seen = 0;
                 jTextArea1.setText("You've been ejected into space.\n" +
                         "You're moving at dangerous speeds.\n" +
                         "Slow down!\n");
-                seen = 6;
+                seen = 7;
                 break;
             }
              case 3: //purple path
@@ -217,7 +222,7 @@ int seen = 0;
                  jTextArea1.setText("You're trapped in a capsule at the\n"
                     + "bottom of the ocean.\n"
                     + "\n");
-                seen = 10;
+                seen = 11;
                 break;
             }
            
@@ -286,7 +291,7 @@ int seen = 0;
                 case 0: //if clicks
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
-                    jTextArea1.setText("compare later");
+                    jTextArea1.setText("Enter two years below\n" + "They must fall between 2500 and 2600");
                     seen = 4;
                     break;
                 }
@@ -295,7 +300,7 @@ int seen = 0;
        } //end seen 3
        
         else
-        if (seen == 4) {
+        if (seen == 5) {
 
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -318,7 +323,7 @@ int seen = 0;
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
                     jTextArea1.setText("Your distress signal was picked up by a freindly pirate!\n");
-                    seen = 5;
+                    seen = 6;
                     break;
                 }
 
@@ -334,7 +339,7 @@ int seen = 0;
         } //end seen 4
         
         else
-        if (seen == 5) {
+        if (seen == 6) {
             jTextArea1.append("Congrats! You made it safely back to Bikini Bottom. "
                     + "\nPress next to try again.");
             seen = 0;
@@ -342,7 +347,7 @@ int seen = 0;
         
 
         //********************Blue*****************************
-        if (seen == 6) {
+        if (seen == 7) {
 
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -366,7 +371,7 @@ int seen = 0;
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
                     jTextArea1.setText("You're swimming through the giant Ocean...");
-                    seen = 7;
+                    seen = 8;
                     break;
                 }
 
@@ -381,7 +386,7 @@ int seen = 0;
         }//close 
         
         else
-        if (seen == 7) {
+        if (seen == 8) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"Shallower",
@@ -404,7 +409,7 @@ int seen = 0;
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
                     jTextArea1.setText("A submarine is approaching.");
-                    seen = 8;
+                    seen = 9;
                     break;
                 }
 
@@ -419,7 +424,7 @@ int seen = 0;
         } //end seen 7
         
         else
-        if (seen == 8) {
+        if (seen == 9) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"Yes",
@@ -441,7 +446,7 @@ int seen = 0;
                 {
                     getContentPane().setBackground(new Color(255, 128,128));
                 jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
-                seen = 9;
+                seen =10;
                 break;
             }
             
@@ -456,9 +461,9 @@ int seen = 0;
         }
             
              
-            if(seen == 9)
+            if(seen == 10)
             {
-                jTextArea1.append("\nCongrats! You made it safely back to Bikini Bottom. "
+                jTextArea1.setText("\nCongrats! You made it safely back to Bikini Bottom. "
                     + "\nPress next to try again.");
             seen = 0;
             }
@@ -466,7 +471,7 @@ int seen = 0;
         
         //********************purple *******************************
         
-        if(seen == 10) {
+        if(seen == 11) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"OK"};
@@ -486,17 +491,17 @@ int seen = 0;
                 case 0: //if clicks
                 {
                     getContentPane().setBackground(new Color(255, 128, 128));
-                    seen = 11;
+                    seen = 12;
                 }
 
             }
 
         }
-        if(seen==11){
+        if(seen == 12){
             jTextArea1.setText("Passcode Pending!");
         }
         
-        if(seen == 12) {
+        if(seen == 13) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"North", "South","East","West"};
@@ -527,7 +532,7 @@ int seen = 0;
             {
                 getContentPane().setBackground( new Color(128,255,128)); 
                 jTextArea1.setText("You've been caught by a fishnet!");
-                seen = 14; 
+                seen = 15; 
                 break;
             }
             
@@ -543,7 +548,7 @@ int seen = 0;
             {
                 //getContentPane().setBackground( new Color(128,128,255)); 
                  jTextArea1.setText("You find a diner!");
-                seen = 16; 
+                seen = 18; 
                 break;
             }    
         }
@@ -551,7 +556,7 @@ int seen = 0;
         }
         
         else
-        if(seen==14){//south
+        if(seen == 15){//south
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"No",
@@ -568,16 +573,16 @@ int seen = 0;
         switch(option){
             case 0:{//no
                 --lifeCount;
-                jTextArea1.setText("Lives: " + lifeCount + "\nYou're tunred into"
+                jTextArea1.setText("Lives: " + lifeCount + "\nYou're turned into"
                         + " sushi! \nPress Next to try again!");
-                seen = 12;
+                seen = 13;
                 break;
             }
             case 1:{//yes
                 --lifeCount;
                 jTextArea1.setText("Lives: " + lifeCount + "\nYou're stangled!"
                         + "\nPress Next to try again!");
-                seen = 12;
+                seen = 13;
                 break;
             }
         }
@@ -585,7 +590,7 @@ int seen = 0;
         }
         
         else
-            if(seen==16){
+            if(seen==18){
                     Object paneBG = UIManager.get("OptionPane.background"); // get original BG
         UIManager.put("OptionPane.background", new Color(200,200,255));
         Object[] options = {"Braised Plankton",
@@ -604,13 +609,13 @@ int seen = 0;
                 --lifeCount;
                 jTextArea1.setText("Lives: " + lifeCount + "\nYou're poisoned!"
                         + "\nPress Next to try again!");
-                seen = 16;
+                seen = 18;
                 break;
             }
             case 1:{//radio-active
                 ++lifeCount;
                 jTextArea1.setText("Lives: " + lifeCount + "\nYou're strengthened!");
-                seen = 17;
+                seen = 19;
                 break;
             }
         }
@@ -618,7 +623,7 @@ int seen = 0;
         }
         
         else
-        if(seen==17){
+        if(seen==19){
                  jTextArea1.setText("A submarine approaches!");
                  Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -641,7 +646,7 @@ int seen = 0;
                 {
                     getContentPane().setBackground(new Color(255, 128,128));
                 jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
-                seen = 9;
+                seen = 10;
                 break;
             }
             
@@ -664,7 +669,29 @@ int seen = 0;
     }//GEN-LAST:event_jButton2ActionPerformed
 //submit button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (seen == 11) {
+        if (seen == 4) {
+            int yearInput;
+            int yearInput2;
+            yearInput = Integer.parseInt(jTextField1.getText());
+            yearInput2 = Integer.parseInt(jTextField2.getText());
+            
+//            if (Math.abs(squidMiss.compareY()) < 0) {
+//                jTextArea1.setText(yearInput + " had " + Math.abs(squidMiss.compareY()) + " less missing persons reports than " + yearInput2);
+//                seen = 4;
+//            } else if (squidMiss.compareY() > 0) {
+//                jTextArea1.setText(yearInput + " had " + Math.abs(squidMiss.compareY()) + " more missing persons reports than " + yearInput2);
+//                seen = 4;
+//            } else {
+//                jTextArea1.setText(yearInput + " and " + yearInput2 + "had the same amount of missing persons reports\n");
+//                seen = 4;
+//            }
+            jTextArea1.setText("years " + yearInput +"\n"+ yearInput2);
+            System.out.println("index " + squidMiss.getMissCount());
+           seen = 5;
+        }
+
+        
+        if (seen == 12) {
             int passcode;
             passcode = Integer.parseInt(jTextField1.getText());
 
@@ -689,13 +716,13 @@ int seen = 0;
                     case 0: //if clicks
                     {
                         getContentPane().setBackground(new Color(255, 128, 128));
-                        seen = 11;
+                        seen = 12;
                     }
 
                 }
             } else {
                 jTextArea1.setText("Passcode Accepted! Click next!");
-                seen = 12;
+                seen = 13;
              }
         }       
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -744,6 +771,7 @@ int seen = 0;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
     private boolean isNumeric(String text) {
