@@ -336,7 +336,7 @@ int seen = 0;
                 }
 
             }
-        } //end seen 4
+        } //end seen 5
         
         else
         if (seen == 6) {
@@ -449,23 +449,20 @@ int seen = 0;
                 seen =10;
                 break;
             }
-            
-            case 1:  
-            {
-                --lifeCount;
-                getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
-                        + "\nPress next to try again!");
-                break;
-            }           
-        }
-            
-             
-            if(seen == 10)
-            {
+          
+                case 1: {
+                    --lifeCount;
+                    getContentPane().setBackground(new Color(128, 255, 128));
+                    jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
+                            + "\nPress next to try again!");
+                    break;
+                }
+            }
+
+            if (seen == 10) {
                 jTextArea1.setText("\nCongrats! You made it safely back to Bikini Bottom. "
-                    + "\nPress next to try again.");
-            seen = 0;
+                        + "\nPress next to try again.");
+                seen = 0;
             }
         }//close 8
         
@@ -644,24 +641,23 @@ int seen = 0;
             switch (option) {
                 case 0: //if clicks
                 {
-                    getContentPane().setBackground(new Color(255, 128,128));
-                jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
-                seen = 10;
-                break;
-            }
-            
-            case 1:  
-            {
-                --lifeCount;
-                getContentPane().setBackground(new Color(128, 255, 128));
-                jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
-                        + "\nPress next to try again!");
-                break;
-            }
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
+                    seen = 10;
+                    break;
+                }
+
+                case 1: {
+                    --lifeCount;
+                    getContentPane().setBackground(new Color(128, 255, 128));
+                    jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck at the bottom of the sea!"
+                            + "\nPress next to try again!");
+                    break;
+                }
             }
         }
-        
-       
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -670,33 +666,36 @@ int seen = 0;
 //submit button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (seen == 4) {
-            int yearInput;
+            int yearInput1;
             int yearInput2;
-            yearInput = Integer.parseInt(jTextField1.getText());
+            yearInput1 = Integer.parseInt(jTextField1.getText());
             yearInput2 = Integer.parseInt(jTextField2.getText());
-            
-//            if (Math.abs(squidMiss.compareY()) < 0) {
-//                jTextArea1.setText(yearInput + " had " + Math.abs(squidMiss.compareY()) + " less missing persons reports than " + yearInput2);
-//                seen = 4;
-//            } else if (squidMiss.compareY() > 0) {
-//                jTextArea1.setText(yearInput + " had " + Math.abs(squidMiss.compareY()) + " more missing persons reports than " + yearInput2);
-//                seen = 4;
-//            } else {
-//                jTextArea1.setText(yearInput + " and " + yearInput2 + "had the same amount of missing persons reports\n");
-//                seen = 4;
-//            }
-            jTextArea1.setText("years " + yearInput +"\n"+ yearInput2);
-            System.out.println("index " + squidMiss.getMissCount());
-           seen = 5;
+
+            squidMiss.setYearInput1(yearInput1);
+            squidMiss.setYearInput2(yearInput2);
+            squidMiss.compareY();
+
+            jTextArea1.setText("years: \n" + yearInput1 + "\n" + yearInput2 + "\n");
+
+            if (squidMiss.compareY() < 0) {
+                jTextArea1.append(yearInput1 + " had " + Math.abs(squidMiss.compareY()) + " less missing persons reports than " + yearInput2);
+                seen = 4;
+            } else if (squidMiss.compareY() > 0) {
+                jTextArea1.append(yearInput1 + " had " + Math.abs(squidMiss.compareY()) + " more missing persons reports than " + yearInput2);
+                seen = 4;
+            } else {
+                jTextArea1.append(yearInput1 + " and " + yearInput2 + "had the same amount of missing persons reports\n");
+                seen = 4;
+            }
+            seen = 5;
         }
 
-        
         if (seen == 12) {
             int passcode;
             passcode = Integer.parseInt(jTextField1.getText());
 
             if (SquidData.isPrime(passcode) == false || passcode > 31 || passcode < 23) {
-               
+
                 Object paneBG = UIManager.get("OptionPane.background"); // get original BG
                 UIManager.put("OptionPane.background", new Color(200, 200, 255));
                 Object[] options = {"OK"};

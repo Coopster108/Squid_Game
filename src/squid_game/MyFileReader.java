@@ -1,4 +1,4 @@
-
+package squid_game;
 /*
  * Reads in a list of doubles into file. Assumes one data item per line.
  */
