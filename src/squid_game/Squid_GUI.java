@@ -127,51 +127,48 @@ int seen = 0;
         
         //Custom button text
         int option;
-        
-        if(lifeCount <= 0){
-      Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Quit",
-                    "Retry"};
-        option = JOptionPane.showOptionDialog(this,
-            "You died!\nGame over. Press Retry to start over.",
-            "Game Over",
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,
-        options,
-        options[1]);
-        
-        switch(option)
-        {
-            case 0:{
-                System.exit(0);
-                break;
-            }
-            
-            case 1:{
-                lifeCount = 5;
-                seen = 0;
-                break;
-            }
-        }
-        
-        }
-        
-        
-        if(seen==0)
-        {
-        jTextArea1.setText("Lives: " + lifeCount + "\nYou are Squidward Tenticals stuck \n" +
-        "in the future. You've arrived \n" +
-        "in an empty room with \n" +
-        "virtual transportation squares.");
 
-        Object paneBG = UIManager.get("OptionPane.background"); // get original BG
-        UIManager.put("OptionPane.background", new Color(200,200,255));
-        Object[] options = {"Red",
-                    "Green",
-                    "Blue",
-                    "Purple"};
+        if (lifeCount <= 0) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Quit",
+                "Retry"};
+            option = JOptionPane.showOptionDialog(this,
+                    "You died!\nGame over. Press Retry to start over.",
+                    "Game Over",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            switch (option) {
+                case 0: {
+                    System.exit(0);
+                    break;
+                }
+
+                case 1: {
+                    lifeCount = 5;
+                    seen = 0;
+                    break;
+                }
+            }
+
+        }
+
+        if (seen == 0) {
+            jTextArea1.setText("Lives: " + lifeCount + "\nYou are Squidward Tenticals stuck \n"
+                    + "in the future. You've arrived \n"
+                    + "in an empty room with \n"
+                    + "virtual transportation squares.");
+
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+            UIManager.put("OptionPane.background", new Color(200, 200, 255));
+            Object[] options = {"Red",
+                "Green",
+                "Blue",
+                "Purple"};
         option = JOptionPane.showOptionDialog(this,
             "Choose a square",
             "Color Picker",
@@ -199,11 +196,11 @@ int seen = 0;
             
             case 1:  //green path
             {
-                getContentPane().setBackground( new Color(128,255,128)); 
+                getContentPane().setBackground(new Color(128, 255, 128));
                 jTextArea1.setText("Oh no!\n"
-                    + "You've gone even further into the future!\n");
-                
-                 seen = 1;
+                        + "You've gone even further into the future!\n");
+
+                seen = 1;
                 break;
             }
             
@@ -241,10 +238,9 @@ int seen = 0;
         
         // ****** LOOK AT THIS THIS IS IMPORTANT LOOK!!! 
         //the "else if" v causes the box to wait!!! ******
-        
-       else
-       if(seen == 2){
-           Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+
+        else if (seen == 2) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"View"};
             option = JOptionPane.showOptionDialog(this,
@@ -268,11 +264,9 @@ int seen = 0;
                 }
 
             }
-       } //end seen 2
-       
-        else
-       if(seen == 3){
-           Object paneBG = UIManager.get("OptionPane.background"); // get original BG
+        } //end seen 2
+        else if (seen == 3) {
+            Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"Compare"};
             option = JOptionPane.showOptionDialog(this,
@@ -297,10 +291,8 @@ int seen = 0;
                 }
 
             }
-       } //end seen 3
-       
-        else
-        if (seen == 5) {
+        } //end seen 3
+        else if (seen == 5) {
 
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
@@ -331,20 +323,17 @@ int seen = 0;
                     getContentPane().setBackground(new Color(128, 255, 128));
                     --lifeCount;
                     jTextArea1.setText("Lives: " + lifeCount + "\nYou're stuck in limbo!\nPress next to try again!");
-                    
+
                     break;
                 }
 
             }
         } //end seen 5
-        
-        else
-        if (seen == 6) {
+        else if (seen == 6) {
             jTextArea1.append("Congrats! You made it safely back to Bikini Bottom. "
                     + "\nPress next to try again.");
             seen = 0;
         } //end of green branch, player wins
-        
 
         //********************Blue*****************************
         if (seen == 7) {
@@ -384,9 +373,7 @@ int seen = 0;
                 }
             }
         }//close 
-        
-        else
-        if (seen == 8) {
+        else if (seen == 8) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"Shallower",
@@ -421,10 +408,8 @@ int seen = 0;
                     break;
                 }
             }
-        } //end seen 7
-        
-        else
-        if (seen == 9) {
+        } //end seen 8
+        else if (seen == 9) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"Yes",
@@ -444,12 +429,12 @@ int seen = 0;
             switch (option) {
                 case 0: //if clicks
                 {
-                    getContentPane().setBackground(new Color(255, 128,128));
-                jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
-                seen =10;
-                break;
-            }
-          
+                    getContentPane().setBackground(new Color(255, 128, 128));
+                    jTextArea1.setText("The submarine will take you back to Bikini Bottom.");
+                    seen = 10;
+                    break;
+                }
+
                 case 1: {
                     --lifeCount;
                     getContentPane().setBackground(new Color(128, 255, 128));
@@ -458,17 +443,15 @@ int seen = 0;
                     break;
                 }
             }
-
-            if (seen == 10) {
+        }//close 9
+          if (seen == 10) {
                 jTextArea1.setText("\nCongrats! You made it safely back to Bikini Bottom. "
                         + "\nPress next to try again.");
                 seen = 0;
             }
-        }//close 8
-        
+
         //********************purple *******************************
-        
-        if(seen == 11) {
+        if (seen == 11) {
             Object paneBG = UIManager.get("OptionPane.background"); // get original BG
             UIManager.put("OptionPane.background", new Color(200, 200, 255));
             Object[] options = {"OK"};
@@ -493,7 +476,7 @@ int seen = 0;
 
             }
 
-        }
+        } //close 11
         if(seen == 12){
             jTextArea1.setText("Passcode Pending!");
         }
@@ -550,7 +533,7 @@ int seen = 0;
             }    
         }
         
-        }
+        } //close 13
         
         else
         if(seen == 15){//south
